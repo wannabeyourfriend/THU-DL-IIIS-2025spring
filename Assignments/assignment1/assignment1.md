@@ -133,7 +133,17 @@ def loss(self, Y_hat, Y, averaged=True):
 
 ### **2**
 
-> Image Classification
+> Image Classification: Data of 10 categories of image classification from the ImageNet dataset and load 10 categories used for this assignments. 分别使用如下三种模型进行pre-train
+- Simple 2-layer NN
+- MLP
+- CNN 
+#### 2.1 Simple 2-layer NN
+
+#### 2.2 MLP
+
+#### 2.3 CNN
+
+
 
 
 

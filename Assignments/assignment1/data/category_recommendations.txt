@@ -1,0 +1,15 @@
+推荐的类别组合:
+
+细粒度分类类别(相似度高):
+n02110341: dalmatian
+n02971356: carton
+n03127925: crate
+n03908618: pencil_box
+n04509417: unicycle
+
+粗粒度分类类别(相似度低):
+n02606052: rock_beauty
+n07613480: trifle
+n07697537: hotdog
+n01704323: triceratops
+n01749939: green_mamba
