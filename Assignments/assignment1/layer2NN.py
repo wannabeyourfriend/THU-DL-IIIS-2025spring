@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 class TwoLayerNN(nn.Module):
-    def __init__(self, input_size=3*224*224, hidden_size=1024, num_classes=10, dropout_rate=0.5):
+    def __init__(self, input_size=3*28*28, hidden_size=1024, num_classes=10, dropout_rate=0.5):
         """
         简单的两层神经网络模型
         
@@ -59,7 +59,7 @@ def train(model, train_loader, val_loader, criterion, optimizer, scheduler, devi
         scheduler: 学习率调度器
         device: 训练设备
         epochs: 训练轮数
-        early_stopping_patience: 早停耐心值
+        early_stopping_patience: 早停耐心值 (已不使用)
     
     Returns:
         训练历史记录
@@ -68,7 +68,6 @@ def train(model, train_loader, val_loader, criterion, optimizer, scheduler, devi
     history = {'train_loss': [], 'train_acc': [], 'val_loss': [], 'val_acc': []}
     
     best_val_acc = 0
-    patience_counter = 0
     
     for epoch in range(epochs):
         # 训练阶段
@@ -148,18 +147,11 @@ def train(model, train_loader, val_loader, criterion, optimizer, scheduler, devi
               f'Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.2f}%, '
               f'Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.2f}%')
         
-        # 早停检查
+        # 保存最佳模型 (不使用早停)
         if val_acc > best_val_acc:
             best_val_acc = val_acc
-            patience_counter = 0
-            # 保存最佳模型
             torch.save(model.state_dict(), 'best_2layernn_model.pth')
             print(f'Model saved with Val Acc: {val_acc:.2f}%')
-        else:
-            patience_counter += 1
-            if patience_counter >= early_stopping_patience:
-                print(f'Early stopping triggered after {epoch+1} epochs')
-                break
     
     return history
 
@@ -217,14 +209,20 @@ def evaluate(model, test_loader, criterion, device):
     
     return test_loss, test_acc
 
-def plot_history(history):
+# 修改plot_history函数，使其返回figure对象而不是直接显示
+def plot_history(history, save_fig=True, show_fig=False):
     """
     绘制训练历史曲线
     
     Args:
         history: 训练历史记录
+        save_fig: 是否保存图像到文件
+        show_fig: 是否显示图像
+    
+    Returns:
+        matplotlib figure对象
     """
-    plt.figure(figsize=(12, 5))
+    fig = plt.figure(figsize=(12, 5))
     
     # 绘制损失曲线
     plt.subplot(1, 2, 1)
@@ -245,10 +243,17 @@ def plot_history(history):
     plt.title('Accuracy Curves')
     
     plt.tight_layout()
-    plt.savefig('2layernn_training_history.png')
-    plt.show()
+    
+    if save_fig:
+        plt.savefig('2layernn_training_history.png')
+    
+    if show_fig:
+        plt.show()
+    
+    return fig
 
-def get_data_loaders(data_dir='data/custom-dataset', batch_size=64, img_size=224):
+# 添加get_data_loaders函数
+def get_data_loaders(data_dir='data/custom-dataset', batch_size=32, img_size=84):
     """
     获取数据加载器
     
@@ -260,13 +265,12 @@ def get_data_loaders(data_dir='data/custom-dataset', batch_size=64, img_size=224
     Returns:
         训练,验证和测试数据加载器
     """
-    # 数据预处理和增强
+    # 数据预处理和增强 (减少增强强度)
     train_transform = transforms.Compose([
         transforms.Resize((img_size, img_size)),
-        transforms.RandomHorizontalFlip(),
-        transforms.RandomRotation(15),
-        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
-        transforms.RandomAffine(degrees=0, translate=(0.1, 0.1)),
+        transforms.RandomHorizontalFlip(p=0.3),  # 降低翻转概率
+        transforms.RandomRotation(10),  # 减小旋转角度
+        transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.05),  # 减小颜色变化
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
@@ -282,44 +286,74 @@ def get_data_loaders(data_dir='data/custom-dataset', batch_size=64, img_size=224
     val_dataset = datasets.ImageFolder(root=f'{data_dir}/val', transform=val_test_transform)
     test_dataset = datasets.ImageFolder(root=f'{data_dir}/test', transform=val_test_transform)
     
-    # 创建数据加载器
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4, pin_memory=True)
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
-    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
+    # 创建数据加载器 (减少训练集的workers数量，确保数据加载一致)
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=2, pin_memory=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=2, pin_memory=True)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=2, pin_memory=True)
     
     return train_loader, val_loader, test_loader
 
-if __name__ == '__main__':
+# 添加一个main函数，用于在Jupyter中调用
+def main(img_size=84, batch_size=32, data_dir='data/custom-dataset', num_classes=10, show_plots=False):
+    """
+    运行两层神经网络实验的主函数
+    
+    Args:
+        img_size: 输入图像大小
+        batch_size: 批量大小
+        data_dir: 数据集目录
+        num_classes: 分类类别数
+        show_plots: 是否显示图形
+    
+    Returns:
+        训练历史、测试损失和准确率、图形对象
+    """
     # 设置随机种子
     torch.manual_seed(42)
     np.random.seed(42)
     
     # 设置设备
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f'Using device: {device}')
+    print(f'使用设备: {device}')
     
     # 获取数据加载器
-    train_loader, val_loader, test_loader = get_data_loaders()
+    train_loader, val_loader, test_loader = get_data_loaders(data_dir=data_dir, batch_size=batch_size, img_size=img_size)
     
-    # 创建模型
-    input_size = 3 * 224 * 224  # 假设输入图像大小为224x224
-    hidden_size = 2048
-    num_classes = 10
-    model = TwoLayerNN(input_size, hidden_size, num_classes, dropout_rate=0.5)
+    # 创建模型 (降低dropout率)
+    input_size = 3 * img_size * img_size
+    hidden_size = 1024
+    model = TwoLayerNN(input_size, hidden_size, num_classes, dropout_rate=0.3)
+    print(f'两层神经网络模型结构: 输入维度={input_size}, 隐藏层大小={hidden_size}, 输出类别={num_classes}')
     
-    # 定义损失函数和优化器
+    # 定义损失函数和优化器 (增加权重衰减)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=1e-4)
+    optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
     
     # 学习率调度器
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=3, verbose=True)
     
     # 训练模型
+    print("开始训练两层神经网络模型...")
     history = train(model, train_loader, val_loader, criterion, optimizer, scheduler, device)
     
     # 绘制训练历史
-    plot_history(history)
+    fig = plot_history(history, save_fig=True, show_fig=show_plots)
     
     # 加载最佳模型并评估
+    print("加载最佳模型并进行评估...")
     model.load_state_dict(torch.load('best_2layernn_model.pth'))
     test_loss, test_acc = evaluate(model, test_loader, criterion, device)
+    
+    # 返回结果
+    results = {
+        'history': history,
+        'test_loss': test_loss,
+        'test_acc': test_acc,
+        'fig': fig
+    }
+    
+    return results
+
+# 修改if __name__ == '__main__'部分
+if __name__ == '__main__':
+    results = main()

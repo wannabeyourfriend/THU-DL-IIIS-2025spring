@@ -137,13 +137,216 @@ def loss(self, Y_hat, Y, averaged=True):
 - Simple 2-layer NN
 - MLP
 - CNN 
-#### 2.1 Simple 2-layer NN
 
-#### 2.2 MLP
+注：实验代码实现细节在文件夹中的`main.ipynb`文件中，这里仅仅提供设计思路和实验结果分析。
 
-#### 2.3 CNN
+#### 2.1 Data Preparation
+
+依照作业要求，选择了ImageNet数据集的一个子集合，共10种类别，每种类别的图片共600张，划分为3:1:1的训练、验证和测试集。选择理由也在`main.ipynb`文件中有详细的说明。
+
+![image-20250409151808915](assets/image-20250409151808915.png)
+
+#### 2.2 Model & Training
+
+##### Simple 2-layer NN
+
+模型定义、训练、评估参数均实现在了文件`layer2NN.py`中。
+
+```mermaid
+graph TD
+    Input[输入图像 84x84x3] --> Flatten[展平 21168]
+    
+    subgraph 第一层
+        Flatten --> FC1[全连接层 21168->1024]
+        FC1 --> BN1[BatchNorm1d 1024]
+        BN1 --> ReLU1[ReLU]
+        ReLU1 --> Drop1[Dropout 0.5]
+    end
+    
+    subgraph 第二层
+        Drop1 --> FC2[全连接层 1024->10]
+    end
+    
+    FC2 --> Output[输出 10类别概率]
+    
+    style Input fill:#f9f,stroke:#333,stroke-width:2px
+    style Output fill:#f9f,stroke:#333,stroke-width:2px
+    style Flatten fill:#f5f5f5,stroke:#666
+    style FC1 fill:#e1f5fe,stroke:#666
+    style BN1 fill:#e1f5fe,stroke:#666
+    style ReLU1 fill:#e1f5fe,stroke:#666
+    style Drop1 fill:#e1f5fe,stroke:#666
+    style FC2 fill:#e8f5e9,stroke:#666
+```
 
 
+
+![](assets/nn.png)
+
+##### MLP (with Res)
+
+模型定义、训练、评估参数均实现在了文件`mlp.py`中。
+
+```mermaid
+graph TD
+    Input[输入图像 84x84x3] --> Flatten[展平 21168]
+    Flatten --> InputDrop[输入Dropout 0.2]
+    
+    %% 保存用于残差连接的输入
+    Flatten --> Identity1[Identity分支 1]
+    
+    subgraph 第一层
+        InputDrop --> FC1[FC1 21168->2048]
+        FC1 --> BN1[BatchNorm1]
+        BN1 --> ReLU1[ReLU]
+        ReLU1 --> Drop1[Dropout 0.5]
+    end
+    
+    subgraph 第二层
+        Drop1 --> FC2[FC2 2048->1024]
+        Identity1 --> Short1[Shortcut1 21168->1024]
+        FC2 --> BN2[BatchNorm2]
+        BN2 --> Add1{+}
+        Short1 --> Add1
+        Add1 --> ReLU2[ReLU]
+        ReLU2 --> Drop2[Dropout 0.5]
+    end
+    
+    %% 保存用于第二个残差连接的特征
+    Drop2 --> Identity2[Identity分支 2]
+    
+    subgraph 第三层
+        Drop2 --> FC3[FC3 1024->512]
+        FC3 --> BN3[BatchNorm3]
+        BN3 --> ReLU3[ReLU]
+        ReLU3 --> Drop3[Dropout 0.5]
+    end
+    
+    subgraph 第四层
+        Drop3 --> FC4[FC4 512->256]
+        Identity2 --> Short2[Shortcut2 1024->256]
+        FC4 --> BN4[BatchNorm4]
+        BN4 --> Add2{+}
+        Short2 --> Add2
+        Add2 --> ReLU4[ReLU]
+        ReLU4 --> Drop4[Dropout 0.5]
+    end
+    
+    Drop4 --> FCOut[输出层 256->10]
+    FCOut --> Output[输出 10类别概率]
+    
+    style Input fill:#f9f,stroke:#333,stroke-width:2px
+    style Output fill:#f9f,stroke:#333,stroke-width:2px
+    style Add1 fill:#ff9,stroke:#333
+    style Add2 fill:#ff9,stroke:#333
+    style Identity1 fill:#cfe,stroke:#333
+    style Identity2 fill:#cfe,stroke:#333
+    style Short1 fill:#cfe,stroke:#333
+    style Short2 fill:#cfe,stroke:#333
+```
+
+
+
+![](assets/MLP.png)
+
+##### CNN
+
+模型定义、训练、评估参数均实现在了文件`cnn.py`中。
+
+
+
+```mermaid
+graph TD
+    Input[输入图像 84x84x3] --> Conv1[Conv1 84x84x64]
+    Conv1 --> BN1[BatchNorm1]
+    BN1 --> ReLU1[ReLU]
+    ReLU1 --> Conv2[Conv2 84x84x64]
+    Conv2 --> BN2[BatchNorm2]
+    BN2 --> ReLU2[ReLU]
+    ReLU2 --> Pool1[MaxPool1 42x42x64]
+    Pool1 --> Drop1[Dropout1]
+
+    Drop1 --> Conv3[Conv3 42x42x128]
+    Conv3 --> BN3[BatchNorm3]
+    BN3 --> ReLU3[ReLU]
+    ReLU3 --> Conv4[Conv4 42x42x128]
+    Conv4 --> BN4[BatchNorm4]
+    BN4 --> ReLU4[ReLU]
+    ReLU4 --> Pool2[MaxPool2 21x21x128]
+    Pool2 --> Drop2[Dropout2]
+
+    Drop2 --> Conv5[Conv5 21x21x256]
+    Conv5 --> BN5[BatchNorm5]
+    BN5 --> ReLU5[ReLU]
+    ReLU5 --> Conv6[Conv6 21x21x256]
+    Conv6 --> BN6[BatchNorm6]
+    BN6 --> ReLU6[ReLU]
+    ReLU6 --> Pool3[MaxPool3 10x10x256]
+    Pool3 --> Drop3[Dropout3]
+
+    Drop3 --> Flatten[Flatten 25600]
+    Flatten --> FC1[FC1 512]
+    FC1 --> BN7[BatchNorm7]
+    BN7 --> ReLU7[ReLU]
+    ReLU7 --> Drop4[Dropout4]
+    Drop4 --> FC2[FC2 10]
+    FC2 --> Output[输出 10类别概率]
+
+    style Input fill:#f9f,stroke:#333,stroke-width:2px
+    style Output fill:#f9f,stroke:#333,stroke-width:2px
+    
+    subgraph 第一个卷积块
+        Conv1
+        BN1
+        ReLU1
+        Conv2
+        BN2
+        ReLU2
+        Pool1
+        Drop1
+    end
+    
+    subgraph 第二个卷积块
+        Conv3
+        BN3
+        ReLU3
+        Conv4
+        BN4
+        ReLU4
+        Pool2
+        Drop2
+    end
+    
+    subgraph 第三个卷积块
+        Conv5
+        BN5
+        ReLU5
+        Conv6
+        BN6
+        ReLU6
+        Pool3
+        Drop3
+    end
+    
+    subgraph 全连接层
+        Flatten
+        FC1
+        BN7
+        ReLU7
+        Drop4
+        FC2
+    end
+```
+
+![](assets/cnn.png)
+
+#### 2.3 Results
+
+|                  | **2-layer NN** | **MLP** | **CNN** |
+| ---------------- | -------------- | ------- | ------- |
+| **Epochs**       | 30             | 50      | 50      |
+| **Test Loss**    | 1.6632         | 1.8321  | 0.6673  |
+| **Test Acc (%)** | 43.83          | 43.75   | 77.50   |
 
 
 

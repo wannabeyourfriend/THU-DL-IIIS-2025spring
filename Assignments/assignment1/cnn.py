@@ -43,8 +43,13 @@ class CNN(nn.Module):
         self.pool3 = nn.MaxPool2d(kernel_size=2, stride=2)
         self.dropout3 = nn.Dropout(0.25)
         
-        # 全连接层
-        self.fc1 = nn.Linear(256 * 28 * 28, 512)  # 假设输入图像大小为224x224
+        # 计算全连接层输入特征数量
+        # 原始图像: 84x84
+        # 经过三次池化(每次缩小一半): 84/2/2/2 = 84/8 = 10.5，向下取整为10
+        # 最终特征图大小: 10x10
+        # 通道数: 256
+        # 总特征数: 256 * 10 * 10 = 25600
+        self.fc1 = nn.Linear(256 * 10 * 10, 512)
         self.bn7 = nn.BatchNorm1d(512)
         self.dropout4 = nn.Dropout(0.5)
         self.fc2 = nn.Linear(512, num_classes)
@@ -90,7 +95,7 @@ def train(model, train_loader, val_loader, criterion, optimizer, scheduler, devi
         scheduler: 学习率调度器
         device: 训练设备
         epochs: 训练轮数
-        early_stopping_patience: 早停耐心值
+        early_stopping_patience: 早停耐心值 (已不使用)
     
     Returns:
         训练历史记录
@@ -99,7 +104,6 @@ def train(model, train_loader, val_loader, criterion, optimizer, scheduler, devi
     history = {'train_loss': [], 'train_acc': [], 'val_loss': [], 'val_acc': []}
     
     best_val_acc = 0
-    patience_counter = 0
     
     for epoch in range(epochs):
         # 训练阶段
@@ -179,83 +183,68 @@ def train(model, train_loader, val_loader, criterion, optimizer, scheduler, devi
               f'Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.2f}%, '
               f'Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.2f}%')
         
-        # 早停检查
+        # 保存最佳模型 (不使用早停)
         if val_acc > best_val_acc:
             best_val_acc = val_acc
-            patience_counter = 0
-            # 保存最佳模型
             torch.save(model.state_dict(), 'best_cnn_model.pth')
             print(f'Model saved with Val Acc: {val_acc:.2f}%')
-        else:
-            patience_counter += 1
-            if patience_counter >= early_stopping_patience:
-                print(f'Early stopping triggered after {epoch+1} epochs')
-                break
     
     return history
 
-def evaluate(model, test_loader, criterion, device):
+def get_data_loaders(data_dir='data/custom-dataset', batch_size=32, img_size=84):
     """
-    评估模型性能
+    获取数据加载器
     
     Args:
-        model: 模型实例
-        test_loader: 测试数据加载器
-        criterion: 损失函数
-        device: 评估设备
+        data_dir: 数据集目录
+        batch_size: 批量大小
+        img_size: 图像大小
     
     Returns:
-        测试损失和准确率
+        训练、验证和测试数据加载器
     """
-    model.to(device)
-    model.eval()
-    test_loss = 0
-    test_correct = 0
-    test_total = 0
+    # 数据预处理和增强 (减少增强强度)
+    train_transform = transforms.Compose([
+        transforms.Resize((img_size, img_size)),
+        transforms.RandomHorizontalFlip(p=0.3),  # 降低翻转概率
+        transforms.RandomRotation(10),  # 减小旋转角度
+        transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.05),  # 减小颜色变化
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])
     
-    class_correct = list(0. for _ in range(10))
-    class_total = list(0. for _ in range(10))
+    val_test_transform = transforms.Compose([
+        transforms.Resize((img_size, img_size)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])
     
-    with torch.no_grad():
-        for inputs, targets in tqdm(test_loader, desc='Evaluating'):
-            inputs, targets = inputs.to(device), targets.to(device)
-            
-            # 前向传播
-            outputs = model(inputs)
-            loss = criterion(outputs, targets)
-            
-            # 统计总体准确率
-            test_loss += loss.item() * inputs.size(0)
-            _, predicted = outputs.max(1)
-            test_total += targets.size(0)
-            test_correct += predicted.eq(targets).sum().item()
-            
-            # 统计每个类别的准确率
-            correct = predicted.eq(targets).cpu().numpy()
-            for i in range(inputs.size(0)):
-                label = targets[i].item()
-                class_correct[label] += correct[i]
-                class_total[label] += 1
+    # 加载数据集
+    train_dataset = datasets.ImageFolder(root=f'{data_dir}/train', transform=train_transform)
+    val_dataset = datasets.ImageFolder(root=f'{data_dir}/val', transform=val_test_transform)
+    test_dataset = datasets.ImageFolder(root=f'{data_dir}/test', transform=val_test_transform)
     
-    test_loss = test_loss / test_total
-    test_acc = 100. * test_correct / test_total
+    # 创建数据加载器 (统一worker数量)
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=2, pin_memory=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=2, pin_memory=True)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=2, pin_memory=True)
     
-    print(f'Test Loss: {test_loss:.4f}, Test Acc: {test_acc:.2f}%')
-    
-    # 打印每个类别的准确率
-    for i in range(10):
-        print(f'Accuracy of class {i}: {100 * class_correct[i] / class_total[i]:.2f}%')
-    
-    return test_loss, test_acc
+    return train_loader, val_loader, test_loader
 
-def plot_history(history):
+# 修改plot_history函数，使其返回figure对象
+def plot_history(history, save_fig=True, show_fig=False):
     """
     绘制训练历史曲线
     
     Args:
         history: 训练历史记录
+        save_fig: 是否保存图像到文件
+        show_fig: 是否显示图像
+    
+    Returns:
+        matplotlib figure对象
     """
-    plt.figure(figsize=(12, 5))
+    fig = plt.figure(figsize=(12, 5))
     
     # 绘制损失曲线
     plt.subplot(1, 2, 1)
@@ -276,79 +265,69 @@ def plot_history(history):
     plt.title('Accuracy Curves')
     
     plt.tight_layout()
-    plt.savefig('cnn_training_history.png')
-    plt.show()
+    
+    if save_fig:
+        plt.savefig('cnn_training_history.png')
+    
+    if show_fig:
+        plt.show()
+    
+    return fig
 
-def get_data_loaders(data_dir='data/custom-dataset', batch_size=32, img_size=224):
+def main(img_size=84, batch_size=32, data_dir='data/custom-dataset', num_classes=10, show_plots=False):
     """
-    获取数据加载器
+    运行CNN实验的主函数
     
     Args:
-        data_dir: 数据集目录
+        img_size: 输入图像大小
         batch_size: 批量大小
-        img_size: 图像大小
+        data_dir: 数据集目录
+        num_classes: 分类类别数
+        show_plots: 是否显示图形
     
     Returns:
-        训练、验证和测试数据加载器
+        训练历史、测试损失和准确率、图形对象
     """
-    # 数据预处理和增强
-    train_transform = transforms.Compose([
-        transforms.Resize((img_size, img_size)),
-        transforms.RandomHorizontalFlip(),
-        transforms.RandomRotation(15),
-        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
-        transforms.RandomAffine(degrees=0, translate=(0.1, 0.1), scale=(0.9, 1.1)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
-    
-    val_test_transform = transforms.Compose([
-        transforms.Resize((img_size, img_size)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
-    
-    # 加载数据集
-    train_dataset = datasets.ImageFolder(root=f'{data_dir}/train', transform=train_transform)
-    val_dataset = datasets.ImageFolder(root=f'{data_dir}/val', transform=val_test_transform)
-    test_dataset = datasets.ImageFolder(root=f'{data_dir}/test', transform=val_test_transform)
-    
-    # 创建数据加载器
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4, pin_memory=True)
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
-    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
-    
-    return train_loader, val_loader, test_loader
-
-if __name__ == '__main__':
     # 设置随机种子
     torch.manual_seed(42)
     np.random.seed(42)
     
     # 设置设备
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f'Using device: {device}')
+    print(f'使用设备: {device}')
     
     # 获取数据加载器
-    train_loader, val_loader, test_loader = get_data_loaders(img_size=224)
+    train_loader, val_loader, test_loader = get_data_loaders(data_dir=data_dir, batch_size=batch_size, img_size=img_size)
     
-    # 创建模型
-    num_classes = 10
+    # 创建模型 (降低dropout率)
     model = CNN(num_classes)
+    print(f'CNN模型结构已创建，输出类别={num_classes}')
     
-    # 定义损失函数和优化器
+    # 定义损失函数和优化器 (增加权重衰减)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4)
+    optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=5e-4)
     
     # 学习率调度器
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=3, verbose=True)
     
     # 训练模型
+    print("开始训练CNN模型...")
     history = train(model, train_loader, val_loader, criterion, optimizer, scheduler, device)
     
     # 绘制训练历史
-    plot_history(history)
+    fig = plot_history(history, save_fig=True, show_fig=show_plots)
     
     # 加载最佳模型并评估
+    print("加载最佳模型并进行评估...")
     model.load_state_dict(torch.load('best_cnn_model.pth'))
     test_loss, test_acc = evaluate(model, test_loader, criterion, device)
+    
+    # 返回结果
+    results = {
+        'history': history,
+        'test_loss': test_loss,
+        'test_acc': test_acc,
+        'fig': fig
+    }
+    
+    return results
