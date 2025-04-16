@@ -1,0 +1,100 @@
+Deep Learning Quesions:
+1: When you run command
+jupyter notebook
+it complain it can't find notebook, how to install it, give the command.
+
+2: Sometime when you run python, it complains the version is too old, 
+how you verify your current env oython version?
+
+3: why set and activate different env in conda is necessary?
+
+4: what's the difference between Classification and Clustering
+
+5: X = torch.arange(12, dtype=torch.float32).reshape((3,4))
+X = ?
+how to sum X on row and column (pytorch code)
+
+6: A = torch.arange(6, dtype=torch.float32).reshape(2, 3)
+sum_A = A.sum(axis=1, keepdims=True)
+sum_A, sum_A.shape
+
+sum_A = A.sum(axis=1, keepdims=False)
+sum_A, sum_A.shape
+
+7:A = torch.arange(6, dtype=torch.float32).reshape(2, 3)
+B = torch.ones(6, dtype=torch.float32).reshape(3, 2)
+A, B, A + B
+why brodcast not applies in here?
+
+8:
+import torch
+x = torch.randn(4, requires_grad=True)
+print(x)
+y=x
+print(y)
+y.backward(gradient=torch.ones(len(y)))
+print(x.grad)
+y.sum().backward()
+print(x.grad)
+====
+解释上面运行的结果，哪里有问题？
+
+9:
+import torch
+import math
+x = torch.randn(4, requires_grad=True)
+print(x)
+print(x.grad)
+y = torch.sin(x)
+print(y)
+u = y.detach()
+print(u)
+z = u * x
+print(z)
+z.sum().backward()
+print(x.grad == u)
+
+x.grad.zero_()
+y.sum().backward()
+print(x.grad == torch.cos(x))
+运行上述代码，是你期待的吗？
+
+10：
+上列中，如果要计算张量 z 对 u 的梯度可以有两种方法
+方法一：不分离
+import torch
+x = torch.randn(4, requires_grad=True)
+print('x=',x)
+y = torch.sin(x)
+u = y  # 不分离，保留梯度信息
+print('u=',u)
+z = u * x
+u.retain_grad()
+
+# 反向传播，计算 z 对 u 和 x 的梯度
+z.sum().backward()
+
+print("梯度 dz/du = x:", u.grad)      # 输出 dz/du = x
+print("梯度 dz/dx = ?:", x.grad)      # 输出 dz/dx = sin(x)+xcos(x)
+这里的？应该是什么？
+
+方法二：分离
+import torch
+x = torch.randn(4, requires_grad=True)
+print('x=',x)
+y = torch.sin(x)
+u = y.detach().requires_grad_(True)  # 分离后重新启用梯度
+print('u=',u)
+z = u * x
+
+# 反向传播，仅计算 z 对 u 的梯度
+z.sum().backward()
+
+print("梯度 dz/du = x:", u.grad)      # 输出 dz/du = x
+print("梯度 dz/dx = u:", x.grad) 
+
+可以试试用deepseek来让它回答这个问题，不一定准确哟。
+
+
+
+

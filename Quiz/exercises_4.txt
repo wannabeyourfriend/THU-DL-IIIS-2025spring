@@ -1,0 +1,28 @@
+Q1: Why CNNs commonly use convolution kernels with odd height and width values, such as 1, 3, 5, or 7?
+ Choosing odd kernel sizes has the benefit that we can preserve the dimensionality while padding with the same number of rows on top and bottom, and the same number of columns on left and right.
+ 
+Q2: In CNN, what's the purpose of using the 1 X 1 Convolutional Layer?
+
+Q3: In CNN, what's the purpose of pooling layer? Name two popular pooling methods.
+
+Q4: AlexNet may be too complex for the Fashion-MNIST dataset, in particular due to the low resolution of the initial images.
+	Try simplifying the model to make the training faster, while ensuring that the accuracy does not drop significantly.
+	Design a better model that works directly on 28x28 images.
+
+Q5: Can you make AlexNet overfit? Which feature do you need to remove or change to break training?
+
+Q6: do we use Batch Normalization/dropout During Prediction? Why?
+
+Q7: In RNN, what's the difference between hidden layers and hidden states? Why we need hidden state?
+
+Q8: In RNN, hidden state hyperparameter, ex, W_xh, W_hh, and W_hq increased or not with number of time steps t increases? Why?
+
+Q9: Why in RNN the gradient clipping is useful sometime?
+
+Q10: In LSTM, how many hidden state involved, can you list them?
+
+Q11: In GRU model, explain the rest gate and update gate functionality.
+
+
+
+ 
