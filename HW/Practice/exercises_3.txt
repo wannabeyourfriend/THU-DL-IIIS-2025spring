@@ -1,0 +1,14 @@
+1: What's the one-hot encoding?  Wh normaly using one-hot encoding “cat”, “chicken”, and “dog” to {(1, 0, 0), (0, 1, 0), (0, 0, 1)} instead of interger 1/2/3?
+
+2: MLP是如何实现Linear to Nonlinear？ What's the functionality of hidden layer？
+
+3： 什么是softmax？什么是activation fuction？区别是什么，何时用这两种函数？
+
+3: why in MLP with multiple hidden layner can have Vanishing and Exploding Gradients?
+
+4: why Early Stopping is important, when to use it(in training or testing)?
+
+5: describe what is dropout,a nd how to use it.
+
+
+
