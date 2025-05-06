@@ -1,0 +1,40 @@
+# 镜像
+# PyTorch  2.3.0
+# Python  3.12(ubuntu22.04)
+# CUDA  12.1
+# GPU
+# RTX 4090(24GB) * 1
+# CPU
+# 16 vCPU Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz
+# 内存
+# 120GB
+# 硬盘
+# 系统盘:30 GB
+# 数据盘:免费:50GB   付费:0GB
+# 附加磁盘
+# 无
+# 端口映射
+# 无
+name: env_dl_hw1
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pytorch=2.3.0
+  - torchvision=0.18.0
+  - pytorch-cuda=12.1
+  - numpy>=1.24.3
+  - matplotlib>=3.7.1
+  - pandas>=2.0.3
+  - pillow>=10.0.0
+  - requests>=2.31.0
+  - tqdm>=4.65.0
+  - ipython>=8.14.0
+  - jupyter>=1.0.0
+  - scikit-learn>=1.3.0
+  - pip>=23.2.1
+  - pip:
+    - d2l==1.0.3

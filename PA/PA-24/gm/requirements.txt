@@ -1,5 +1,0 @@
-click
-torchinfo
-torch
-torchvision
-tqdm

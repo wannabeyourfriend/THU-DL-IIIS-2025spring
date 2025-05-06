@@ -59,7 +59,7 @@ class SFTTrainer(Trainer):
         self.device = device
         assert self.device == 'cuda'
         self.num_steps = cfg.num_steps
-        self.save_freq = 20000
+        self.save_freq = 1000
         self.train_dataloader =  iter(
             DataLoader(train_dataset,
                        batch_size=cfg.batch_size,
@@ -217,7 +217,7 @@ class DPOTrainer(Trainer):
                     attention_masks = attention_masks.to(self.device)
 
                     with torch.autocast(device_type=self.device, dtype=self.dtype):
-                        loss, acc = self.shared_step(self.model, self.sft_model, completions, attention_masks)
+                        loss, acc = self.shared_step(completions, attention_masks)
 
                     if self.grad_clip != 0.0:
                         torch.nn.utils.clip_grad_norm_(self.model.parameters(),
@@ -243,7 +243,7 @@ class DPOTrainer(Trainer):
                             for completions, attention_masks in tqdm(self.test_dataloader):
                                 completions = completions.to(self.device)
                                 attention_masks = attention_masks.to(self.device)
-                                loss, acc = self.shared_step(self.model, self.sft_model, completions, attention_masks)
+                                loss, acc = self.shared_step(completions, attention_masks)
                                 lossf, accf = loss.item(), acc.item()
                                 losses.append(lossf)
                                 accs.append(accf)
