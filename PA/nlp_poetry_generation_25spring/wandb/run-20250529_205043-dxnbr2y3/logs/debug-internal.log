@@ -1,0 +1,43 @@
+{"time":"2025-05-29T20:50:43.552568372+08:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"/root/autodl-tmp/PA2/wandb/run-20250529_205043-dxnbr2y3/logs/debug-core.log"}
+{"time":"2025-05-29T20:50:44.36735148+08:00","level":"INFO","msg":"created new stream","id":"dxnbr2y3"}
+{"time":"2025-05-29T20:50:44.367421485+08:00","level":"INFO","msg":"stream: started","id":"dxnbr2y3"}
+{"time":"2025-05-29T20:50:44.367463981+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"dxnbr2y3"}
+{"time":"2025-05-29T20:50:44.367480294+08:00","level":"INFO","msg":"sender: started","stream_id":"dxnbr2y3"}
+{"time":"2025-05-29T20:50:44.367512251+08:00","level":"INFO","msg":"handler: started","stream_id":"dxnbr2y3"}
+{"time":"2025-05-29T20:50:44.798960021+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-05-29T20:52:32.723991841+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T20:52:40.749115807+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T20:53:41.376260473+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T20:53:41.984082062+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T20:53:45.467499045+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T20:53:46.787662965+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T20:53:55.158542223+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T20:53:56.912578817+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T20:54:05.198350922+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T21:03:55.559297528+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T21:06:34.248873337+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T21:06:39.918884091+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T21:49:08.68851252+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T21:49:09.113660582+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T21:50:56.686002025+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T21:50:56.937372766+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T21:54:54.831416926+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/3555125903-tsinghua-university/huggingface/dxnbr2y3/file_stream\": unexpected EOF"}
+{"time":"2025-05-29T21:55:42.973108426+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T21:55:43.215108992+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T22:02:31.893758612+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T22:02:31.926478657+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T22:03:17.162933496+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T22:03:17.250435024+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T22:03:32.468290502+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T22:03:38.766190317+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T22:10:10.567517421+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T22:10:11.046428679+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T22:10:17.243795938+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T22:10:22.044521599+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T22:10:49.958935065+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T22:11:12.071834425+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T22:14:22.900211306+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T22:14:23.261048556+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T22:14:30.756471345+08:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-29T22:15:21.790948396+08:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-29T22:24:25.295653091+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/3555125903-tsinghua-university/huggingface/dxnbr2y3/file_stream\": unexpected EOF"}

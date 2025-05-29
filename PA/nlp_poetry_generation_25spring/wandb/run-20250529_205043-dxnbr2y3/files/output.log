@@ -1,0 +1,438 @@
+trainable params: 14,991,360 || all params: 1,851,820,032 || trainable%: 0.8095473502254457
+开始微调...
+变量 'model' 已删除。
+变量 'trainer' 已删除。
+Python 垃圾回收已执行。
+PyTorch CUDA 缓存已清理。
+
+显存清理尝试完成。现在您可以应用新的配置并重新开始训练。
+数据格式示例 (训练集):
+[{'content': '请补全这首唐诗：东宫白庶子，', 'role': 'user'}, {'content': '南寺远禅师。何处遥相见，心无一事时。', 'role': 'assistant'}]
+
+处理后的训练集样本数量: 35998
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+模型和分词器已从本地路径 './pretrain/Qwen1.5-1.8B-Chat/' 加载。
+trainable params: 14,991,360 || all params: 1,851,820,032 || trainable%: 0.8095473502254457
+开始微调...
+/root/miniconda3/lib/python3.12/site-packages/peft/utils/save_and_load.py:154: UserWarning: Could not find a config file in ./pretrain/Qwen1.5-1.8B-Chat/ - will assume that the vocabulary was not modified.
+  warnings.warn(
+微调完成！
+/root/miniconda3/lib/python3.12/site-packages/peft/utils/save_and_load.py:154: UserWarning: Could not find a config file in ./pretrain/Qwen1.5-1.8B-Chat/ - will assume that the vocabulary was not modified.
+  warnings.warn(
+模型适配器已保存到 ./pretrain/final_poetry_adapter
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+--- 测试开头: 白日依山尽， ---
+模型生成结果:
+白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+
+--- 测试开头: 红豆生南国， ---
+模型生成结果:
+红豆生南国，春来发几枝。愿君多采撷，此物最相思。
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+
+--- 测试开头: 床前明月光， ---
+模型生成结果:
+床前明月光，疑是地上霜。举头望明月，低头思故乡。
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+
+--- 测试开头: 双燕东南飞 ---
+模型生成结果:
+双燕东南飞一庭花落暮砧吟。夜深人静闻声绝，隔水遥山月色侵。
+
+变量 'model' 已删除。
+变量 'trainer' 已删除。
+Python 垃圾回收已执行。
+PyTorch CUDA 缓存已清理。
+
+显存清理尝试完成。现在您可以应用新的配置并重新开始训练。
+Python 垃圾回收已执行。
+PyTorch CUDA 缓存已清理。
+
+显存清理尝试完成。现在您可以应用新的配置并重新开始训练。
+Python 垃圾回收已执行。
+PyTorch CUDA 缓存已清理。
+
+显存清理尝试完成。现在您可以应用新的配置并重新开始训练。
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+--- 测试开头: 白日依山尽， ---
+模型生成结果:
+白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+
+--- 测试开头: 红豆生南国， ---
+模型生成结果:
+红豆生南国，春来发几枝。愿君多采撷，此物最相思。
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+
+--- 测试开头: 床前明月光， ---
+模型生成结果:
+床前明月光，疑是地上霜。举头望明月，低头思故乡。
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+
+--- 测试开头: 双燕东南飞， ---
+模型生成结果:
+双燕东南飞，一蝉北去吟。欲知相问处，应是陇头林。
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+
+--- 测试开头: 万里扬帆迎六月， ---
+模型生成结果:
+万里扬帆迎六月，千山尽入沧波里。风高夜半江声绝，空有碧天如水色。一叶扁舟横一叶，愁看明月照孤舟。
+
+Python 垃圾回收已执行。
+PyTorch CUDA 缓存已清理。
+
+显存清理尝试完成。现在您可以应用新的配置并重新开始训练。
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Tokenizer loaded from adapter path: ./pretrain/final_poetry_adapter/
+
+Loading BASELINE model...
+BASELINE model loaded.
+
+Loading FINE-TUNED model...
+FINE-TUNED model loaded.
+
+Loading test dataset from: ./data/tang_poems/test-00000-of-00001-a794cd4c018c9326.parquet
+Loaded 5274 samples from test set. Selected 5 for demo.
+Prepared 5 prompts from test dataset.
+
+Creating pipelines...
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Tokenizer loaded from adapter path: ./pretrain/final_poetry_adapter/
+
+Loading BASELINE model...
+BASELINE model loaded.
+
+Loading FINE-TUNED model...
+FINE-TUNED model loaded.
+
+Loading test dataset from: ./data/tang_poems/test-00000-of-00001-a794cd4c018c9326.parquet
+Loaded 5274 samples from test set. Selected 5 for demo.
+Prepared 5 prompts from test dataset.
+
+Creating pipelines...
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+Pipelines created.
+
+--- 开始生成对比结果 ---
+
+======================================================================
+📜 测试开头: 廷评年少法家流，
+📖 参考原文: 廷评年少法家流，心似澄江月正秋。学究天人知远识，权分盐铁许良筹。春风忆酒乌家近，好月论禅谢寺幽。清白比来谁见赏，怜君独有富人侯。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+廷评年少法家流，廷评年少法家流，
+明镜照出真面目。
+书生挥毫立纲纪，
+笔下生辉显智慧。
+
+时论争锋论道统，
+学海无涯任我游。
+法治为治先驱，
+公正
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+廷评年少法家流，不学官闲似许愁。更欲乘风飞去住，不嫌尘土亦堪秋。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 枯木藏龙，
+📖 参考原文: 枯木藏龙，雷动必惊。惊者是少，不惊者多。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+枯木藏龙，老树参天立，枯枝上隐龙。
+千秋犹傲骨，万壑共流声。
+苍劲凌风骨，深邃显智魂。
+龙游天地间，独显壮志宏。
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+枯木藏龙，枯枝著凤。若非有德，何得生灵？
+======================================================================
+
+
+======================================================================
+📜 测试开头: 暗窦养泉容决决，
+📖 参考原文: 暗窦养泉容决决，明园护桂放亭亭。历山居处当天半，夏里松风尽足听。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+暗窦养泉容决决，暗窦养泉容决决，疏泉石壁静潺潺。
+深林幽径花香溢，鸟语虫鸣声悠扬。
+翠竹婆娑风过处，泉水清澈映日光。
+鱼跃水面戏波光，山色水天共融茫
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+暗窦养泉容决决，平湖游鸭去茫茫。一溪碧水清如镜，万里青天明似光。雨落沙翻云雾合，风回树转鸟声长。因思故乡千里外，白发无端满钓竿。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 碧丛丛，
+📖 参考原文: 碧丛丛，高插天，大江翻澜神曳烟。楚魂寻梦风飔然，晓风飞雨生苔钱。瑶姬一去一千年，丁香笻竹啼老猿。古祠近月蟾桂寒，椒花坠红湿云间。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+碧丛丛，翠色满山春。
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+碧丛丛，绿蔓蔓。日出林梢百鸟啭，莺啼花落春风暖。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 潘郎美貌谢公诗，
+📖 参考原文: 潘郎美貌谢公诗，银印花骢年少时。楚地江皋一为别，晋山沙水独相思。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+潘郎美貌谢公诗，潘郎美貌谢公诗，
+两鬓斑白风霜侵。
+明月清泉映玉肌，
+独立江边心似冰。
+
+娇颜如花醉春风，
+碧波荡漾水自流。
+笑语盈盈似春鸟，
+独步山林意悠
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+潘郎美貌谢公诗，不觉年华已似丝。莫道人间多白发，此中唯我少年时。
+======================================================================
+
+所有选定样本测试完成。
+Python 垃圾回收已执行。
+PyTorch CUDA 缓存已清理。
+
+显存清理尝试完成。现在您可以应用新的配置并重新开始训练。
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Tokenizer loaded from adapter path: ./pretrain/final_poetry_adapter/
+
+Loading BASELINE model...
+BASELINE model loaded.
+
+Loading FINE-TUNED model...
+FINE-TUNED model loaded.
+
+Loading test dataset from: ./data/tang_poems/test-00000-of-00001-a794cd4c018c9326.parquet
+Loaded 5274 samples from test set. Selected 10 for demo.
+Prepared 10 prompts from test dataset.
+
+Creating pipelines...
+The model 'PeftModelForCausalLM' is not supported for text-generation. Supported models are ['BartForCausalLM', 'BertLMHeadModel', 'BertGenerationDecoder', 'BigBirdForCausalLM', 'BigBirdPegasusForCausalLM', 'BioGptForCausalLM', 'BlenderbotForCausalLM', 'BlenderbotSmallForCausalLM', 'BloomForCausalLM', 'CamembertForCausalLM', 'LlamaForCausalLM', 'CodeGenForCausalLM', 'CohereForCausalLM', 'CpmAntForCausalLM', 'CTRLLMHeadModel', 'Data2VecTextForCausalLM', 'DbrxForCausalLM', 'ElectraForCausalLM', 'ErnieForCausalLM', 'FalconForCausalLM', 'FuyuForCausalLM', 'GemmaForCausalLM', 'GitForCausalLM', 'GPT2LMHeadModel', 'GPT2LMHeadModel', 'GPTBigCodeForCausalLM', 'GPTNeoForCausalLM', 'GPTNeoXForCausalLM', 'GPTNeoXJapaneseForCausalLM', 'GPTJForCausalLM', 'JambaForCausalLM', 'LlamaForCausalLM', 'MambaForCausalLM', 'MarianForCausalLM', 'MBartForCausalLM', 'MegaForCausalLM', 'MegatronBertForCausalLM', 'MistralForCausalLM', 'MixtralForCausalLM', 'MptForCausalLM', 'MusicgenForCausalLM', 'MusicgenMelodyForCausalLM', 'MvpForCausalLM', 'OlmoForCausalLM', 'OpenLlamaForCausalLM', 'OpenAIGPTLMHeadModel', 'OPTForCausalLM', 'PegasusForCausalLM', 'PersimmonForCausalLM', 'PhiForCausalLM', 'PLBartForCausalLM', 'ProphetNetForCausalLM', 'QDQBertLMHeadModel', 'Qwen2ForCausalLM', 'Qwen2MoeForCausalLM', 'RecurrentGemmaForCausalLM', 'ReformerModelWithLMHead', 'RemBertForCausalLM', 'RobertaForCausalLM', 'RobertaPreLayerNormForCausalLM', 'RoCBertForCausalLM', 'RoFormerForCausalLM', 'RwkvForCausalLM', 'Speech2Text2ForCausalLM', 'StableLmForCausalLM', 'Starcoder2ForCausalLM', 'TransfoXLLMHeadModel', 'TrOCRForCausalLM', 'WhisperForCausalLM', 'XGLMForCausalLM', 'XLMWithLMHeadModel', 'XLMProphetNetForCausalLM', 'XLMRobertaForCausalLM', 'XLMRobertaXLForCausalLM', 'XLNetLMHeadModel', 'XmodForCausalLM'].
+Pipelines created.
+
+--- 开始生成对比结果 ---
+
+======================================================================
+📜 测试开头: 廷评年少法家流，
+📖 参考原文: 廷评年少法家流，心似澄江月正秋。学究天人知远识，权分盐铁许良筹。春风忆酒乌家近，好月论禅谢寺幽。清白比来谁见赏，怜君独有富人侯。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+廷评年少法家流，廷评年少法家流，
+深思明理度朝晖。
+倡言法治彰正义，
+民风淳朴振国威。
+
+论断公平公正，
+德政垂范天下人。
+律己慎行守公道，
+清正廉洁树楷模。
+
+执法如山
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+廷评年少法家流，玉帐横陈金鼎游。玉匣中分千载雪，琼筵上会九秋风。春来见舞朝倾国，秋至闻歌夜不空。为报主恩还下泪，故园无处问芳踪。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 枯木藏龙，
+📖 参考原文: 枯木藏龙，雷动必惊。惊者是少，不惊者多。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+枯木藏龙，枯木藏龙，独树一帜；
+百年风雨，傲视群雄。
+枝叶苍老，岁月如歌；
+坚韧不拔，风骨犹存。
+繁花似锦，生机勃发；
+枝干参天，山河壮丽。
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+枯木藏龙，孤松隐士。故人归去，犹有高名。古柏寒声，萧疏阴气。秋风不改，长夜难明。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 暗窦养泉容决决，
+📖 参考原文: 暗窦养泉容决决，明园护桂放亭亭。历山居处当天半，夏里松风尽足听。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+暗窦养泉容决决，暗窦养泉容决决，流泉石上鸟声低。
+山泉自笑云中语，疑是仙人弄瑶琴。
+
+月照幽林映翠微，清风徐来舞轻薇。
+潺潺泉水唤客心，石壁流年
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+暗窦养泉容决决，闲园栽竹势盈盈。春来共种垂杨柳，莫学池塘生绿萍。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 碧丛丛，
+📖 参考原文: 碧丛丛，高插天，大江翻澜神曳烟。楚魂寻梦风飔然，晓风飞雨生苔钱。瑶姬一去一千年，丁香笻竹啼老猿。古祠近月蟾桂寒，椒花坠红湿云间。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+碧丛丛，翠缕缕，含烟雨。
+山峦叠嶂水潺潺，映照着人间烟火气。
+霞光万道金波涌，璀璨夺目如星辰。
+鸟儿轻啼枝头语，唤醒了沉睡的大地梦。
+
+松柏挺拔迎朝晖
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+碧丛丛，紫阁紫烟中。玉辇回空路渐远，金鞭拂水风生。花满春城游女，柳飞秋浦眠鸥。离宫别馆无消息，唯见天边落照红。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 潘郎美貌谢公诗，
+📖 参考原文: 潘郎美貌谢公诗，银印花骢年少时。楚地江皋一为别，晋山沙水独相思。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+潘郎美貌谢公诗，潘郎美貌谢公诗，翩若仙子入画图。
+眉目如画映日月，皓齿银牙动春风。
+青丝长发随风舞，素颜如雪胜桃红。
+举步生姿惊四海，倾城一笑醉千人
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+潘郎美貌谢公诗，莫道无心却有情。独向窗前空独立，夕阳西下鸟声清。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 孤城永巷时相见，
+📖 参考原文: 孤城永巷时相见，衰柳闲门日半斜。欲送近臣朝魏阙，犹怜残菊在陶家。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+孤城永巷时相见，孤城深巷夜相逢，
+月照江水如银波。
+
+独倚栏杆思故国，
+寒风瑟瑟入窗愁。
+
+岁月匆匆如流水，
+沧桑巨变在眼前。
+
+多少离别情难舍，
+唯有明月
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+孤城永巷时相见，一树秋蝉自不闻。莫道此身将老去，十年曾作楚山云。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 别离共成怨，
+📖 参考原文: 别离共成怨，衰老更难忘。夜月留同舍，秋风在远乡。朱弦徐向烛，白发强临觞。归献西陵作，谁知此路长。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+别离共成怨，别离共成怨，相思泪满衣。
+
+日月无情换，海枯石烂期。
+
+风华易老去，岁月无常时。
+
+唯有心相连，此情可待时。
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+别离共成怨，一梦是空台。今日花朝月，何时见故乡。无端游子泪，徒尔两心焦。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 纱巾草履竹疏衣，
+📖 参考原文: 纱巾草履竹疏衣，晚下香山蹋翠微。一路凉风十八里，卧乘篮轝睡中归。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+纱巾草履竹疏衣，山径松阴水映桥，
+月光洒落小溪边。
+野花盛开香气浓，
+竹林深处鸟语频。
+
+露珠滴在绿叶间，
+清风吹过树叶声。
+微风拂面心舒畅，
+竹影
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+纱巾草履竹疏衣，云阁烟霞自寂寥。山雨过林红叶合，水云晴树白花飘。寒禽独宿巢中夜，深院无人梦里朝。不向人间能得酒，更将诗句寄归欤。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 苏台踪迹在，
+📖 参考原文: 苏台踪迹在，旷望向江滨。往事谁堪问，连空草自春。花疑西子脸，涛想伍胥神。吟尽情难尽，斜阳照路尘。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+苏台踪迹在，曾记云烟远，今朝花落迟。
+
+苍苔阶石砌，古木月光垂。
+
+飞瀑流泉响，幽径鸟语熙。
+
+江山多美事，谁解此心痴。
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+苏台踪迹在，楚泽路遥深。云水俱千里，风帆且一鳞。青林秋草遍，黄叶晚烟侵。唯向西溪宿，相思望月心。
+======================================================================
+
+
+======================================================================
+📜 测试开头: 一别杜陵归未期，
+📖 参考原文: 一别杜陵归未期，祗凭魂梦接亲知。近来欲睡兼难睡，夜夜夜深闻子规。
+----------------------------------------------------------------------
+⏳ 正在使用基线模型生成...
+🤖 基线模型生成:
+一别杜陵归未期，二度春风吹剑影，三声雁叫绕山飞。
+
+四海苍茫云雾散，五湖碧波月色明。
+
+六月烟雨江南美，七夕鹊桥相会时。
+
+八方宾客皆欢聚，九霄鸿雁共翱翔
+----------------------------------------------------------------------
+⏳ 正在使用微调模型生成...
+🚀 微调模型生成:
+一别杜陵归未期，孤舟夜泊水连西。云随日月同飘荡，人逐江湖自可齐。白发若为明镜失，绿窗空隔故山啼。今宵何处相寻处，烟水茫茫秋色迷。
+======================================================================
+
+所有选定样本测试完成。

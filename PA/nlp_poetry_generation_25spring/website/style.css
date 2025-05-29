@@ -1,0 +1,224 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f0f2f5; /* Lighter grey background */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 25px 45px;
+    border-radius: 16px; /* Softer corners */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12); /* More pronounced shadow */
+    width: 90%;
+    max-width: 1100px; /* Slightly wider for better readability */
+    text-align: center;
+}
+
+header h1 {
+    color: #1a2533; /* Darker, more professional blue */
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    font-weight: 600;
+}
+header p {
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+
+.comparison-slider {
+    position: relative;
+    min-height: 400px; /* Ensure space during transitions */
+}
+
+.slide {
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out; /* Slightly faster, smoother transition */
+}
+
+.slide.fade-out {
+    opacity: 0;
+    /* position: absolute; Prevent content jumping during fade out */
+    /* width: 100%; */
+}
+
+.slide.fade-in {
+    opacity: 1;
+}
+
+.preamble {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 1.5em; /* Larger preamble */
+    text-align: left;
+    padding: 15px 20px;
+    background-color: #eaf2f8; /* Light blue background */
+    border-left: 6px solid #3498db; /* Prominent blue accent */
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.preamble span {
+    font-weight: normal;
+}
+
+.result-box {
+    background-color: #fdfdfd; /* Very light off-white */
+    border: 1px solid #dce4ec; /* Softer border */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06); /* Subtle shadow for depth */
+    min-height: 120px;
+    overflow-wrap: break-word; /* Ensure long words break */
+}
+
+.result-box h3 {
+    margin-top: 0;
+    font-size: 1.3em; /* Larger headings */
+    border-bottom: 2px solid #e0e6ed;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: 600; /* Bolder headings */
+}
+
+.gt-box {
+    background-color: #e6fef9; /* Light mint green */
+    border-left: 6px solid #1abc9c;
+}
+.gt-box h3 {
+    color: #16a085;
+}
+
+.models-comparison {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.base-box, .finetune-box {
+    flex: 1;
+}
+
+.base-box {
+    background-color: #fff4e6; /* Light orange/peach */
+    border-left: 6px solid #e67e22;
+}
+.base-box h3 {
+    color: #d35400;
+}
+
+.finetune-box {
+    background-color: #e9f7ef; /* Light success green */
+    border-left: 6px solid #2ecc71;
+}
+.finetune-box h3 {
+    color: #27ae60;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* Modern mono font stack */
+    font-size: 0.98em; /* Slightly larger pre text */
+    line-height: 1.7; /* More spacing for readability */
+    color: #3c4043; /* Darker text for better contrast */
+    margin: 0;
+}
+
+.navigation {
+    margin-top: 20px; /* Reduced margin top */
+    margin-bottom: 15px; /* Added margin bottom */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 28px; /* Slightly larger buttons */
+    border-radius: 8px; /* More rounded buttons */
+    font-size: 1.05em; /* Slightly larger font */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.15s ease;
+    margin: 0 12px;
+}
+
+.navigation button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.navigation button:active {
+    transform: translateY(0px);
+}
+
+.navigation button:disabled {
+    background-color: #a9cce3; /* Lighter blue when disabled */
+    cursor: not-allowed;
+    transform: none;
+}
+
+#current-slide-info {
+    font-size: 1.1em;
+    color: #4a5568; /* Softer grey for info text */
+    margin: 0 15px;
+    min-width: 60px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.autoplay-info {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 1.9em;
+    }
+    header p {
+        font-size: 1em;
+    }
+
+    .preamble {
+        font-size: 1.3em;
+        padding: 12px 15px;
+    }
+
+    .models-comparison {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .result-box h3 {
+        font-size: 1.15em;
+    }
+
+    .navigation button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+    #current-slide-info {
+        font-size: 1em;
+    }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模型效果展示</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>模型生成效果对比</h1>
+            <p>自动循环展示 Ground Truth, Baseline 模型, 和 Finetune 模型的生成结果。</p>
+        </header>
+
+        <div class="comparison-slider">
+            <div class="slide">
+                <h2 class="preamble">📜 测试开头: <span id="preamble-text"></span></h2>
+
+                <div class="result-box gt-box">
+                    <h3>📖 参考原文 (Ground Truth)</h3>
+                    <pre id="gt-text"></pre>
+                </div>
+
+                <div class="models-comparison">
+                    <div class="result-box base-box">
+                        <h3>🤖 基线模型 (Base)</h3>
+                        <pre id="base-text"></pre>
+                    </div>
+                    <div class="result-box finetune-box">
+                        <h3>🚀 微调模型 (Finetune)</h3>
+                        <pre id="finetune-text"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button id="prevBtn" title="上一个">❮ Prev</button>
+            <span id="current-slide-info"></span>
+            <button id="nextBtn" title="下一个">Next ❯</button>
+        </div>
+         <p class="autoplay-info">结果每 <span id="autoplay-delay-info">7</span> 秒自动切换。将鼠标悬停在内容区域可暂停。</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
