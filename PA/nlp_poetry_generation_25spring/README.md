@@ -1,4 +1,5 @@
 # Tang  Poem Generation Problem
+>作业说明文档
 
 ## Instruction
 
@@ -101,7 +102,7 @@ https://wannabeyourfriend.github.io/Qwen1.5-1.8B-chat-SFT-tang-poetry.github.io/
 
 ## Check
 
-您可以进入`train.ipynb`详细查看训练与评估情况
+可以进入`train.ipynb`查看训练与评估的详细数据
 
 ## Observation
 
